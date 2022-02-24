@@ -67,7 +67,9 @@ void menuwindow()
 					scanf("%d",&pass);
 					switch(pass)
 						{
-							case 123: adminwindow();
+							case 123:
+							clrscr();
+							adminwindow();
 							break;
 							default:
 							printf("INCORRECT PASSWORD");
@@ -78,11 +80,83 @@ void menuwindow()
 					printf("INCORRECT ID");
 					break;
 				}
-			return(0);
 		}
 		case 3:
 		printf("\n\t\t\t\t\t THANKS FOR OPENING ");
 		break;
-		return 0;
+		default:
+		printf("INVALID CHOICE!!!");
+		menuwindow();
 	}
+}
+
+void customerwindow()
+{
+	int choice;
+	printf("\n");
+	
+	printf("\n\t\t\t\t\t CUSTOMER MENU \n\t\t\t\t\t");
+	printf("\n\t\t\t\t\t | (1) BUY PRODUCT |");
+	printf("\n\t\t\t\t\t | (2) AVAILABLE PRODUCT |");
+	printf("\n\t\t\t\t\t | (3) BACK | \n\t\t\t\t\t");
+
+	printf("\n\t\t\t\t\t CHOOSE A NUMBER : ");
+	scanf("%d",&choice);
+
+	switch(choice)
+	{
+		case 1: 
+		printf("heelo");
+		break;
+		case 2:
+		printf("hehehehehhe");
+		break;
+		case 3: 
+		menuwindow();
+		break;
+		default:
+		printf("INVALID CHOICE!!!");
+		customerwindow();
+	}
+}
+
+void adminwindow()
+{
+	int choice;
+	printf("\n");
+	
+	printf("\n\t\t\t\t\t CUSTOMER MENU \n\t\t\t\t\t");
+	printf("\n\t\t\t\t\t | (1) ADD PRODUCT |");
+	printf("\n\t\t\t\t\t | (2) DELETE PRODUCT |");
+	printf("\n\t\t\t\t\t | (3) MODIFY PRODUCT |");
+	printf("\n\t\t\t\t\t | (4) VIEW ALL PRODUCT |");
+	printf("\n\t\t\t\t\t | (5) BACK |");
+
+	printf("\n\t\t\t\t\t CHOOSE A NUMBER :");
+	scanf("%d",&choice);
+
+	switch(choice)
+	{
+		case 1:
+		printf("add");
+		break;
+		case 2:
+		printf("delete");
+		break;
+		case 3:
+		printf("modify");
+		break;
+		case 4:
+		printf("all product");
+		break;
+		case 5: menuwindow();
+		break;
+		default:
+		printf("INVALID CHOISE!!!");
+		adminwindow();
+
+
+	}
+
+
 }
