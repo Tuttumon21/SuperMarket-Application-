@@ -14,6 +14,9 @@ void menuwindow();
 void customerwindow();
 void adminwindow();
 
+
+
+
 int main()
 {
 
@@ -73,6 +76,7 @@ void menuwindow()
 							break;
 							default:
 							printf("INCORRECT PASSWORD");
+							menuwindow();
 							break;
 						}
 					break;
@@ -80,6 +84,7 @@ void menuwindow()
 					printf("INCORRECT ID");
 					break;
 				}
+			menuwindow();
 		}
 		case 3:
 		printf("\n\t\t\t\t\t THANKS FOR OPENING ");
@@ -160,3 +165,4 @@ void adminwindow()
 
 
 }
+
