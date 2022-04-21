@@ -16,4 +16,6 @@ sell. Any modifications to be done in the item name and the rate can be done onl
 admin. The admin also has the right to delete any item.
 
     As a buyer one can see the list of available items in this store. Then after buying any
-products one can calculate total bill information. 
+products one can calculate total bill information.
+
+THANKYOU...
