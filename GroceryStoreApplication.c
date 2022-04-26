@@ -40,7 +40,11 @@ struct items findProduct(int id);
 void updateproduct(int id,int quantity);
 void displayALLProduct();
 void generatebill();
-int total=0;
+
+float total=0;
+float dis;
+float net;
+float gst,grandtotal;
 
 //STARTING HERE
 int main()
@@ -654,23 +658,41 @@ void  generatebill()
 
 	system("cls");
 	fp=fopen("cubill.txt","r");
-	printf("\n\t\t\t\t---BILL DETAILS---\n\n");
+	printf("\n\t\t\t\t-------------------WELCOME------------------");
+	printf("\n\t\t\t\t-----------------SUPERMARKET----------------");
+	printf("\n\t\t\t\t NAME      : xxxxxx");
+	printf("\n\t\t\t\t BILL NO   : xxxxxx");
+	printf("\n\t\t\t\t DATE|TIME : xx/xx/xxxx xx:xx:xx");
+	printf("\n\t\t\t\t-----------------BILL DETAILS-----------------\n\n");
 	printf("\t\t\t\tPRODUCT ID\tPRODUCT NAME\tPRODUCT PRICE\n\n");
 	
-		while(fread(&t2,sizeof(t2),1,fp))
-		{
+	while(fread(&t2,sizeof(t2),1,fp))
+	{
 		if (feof(fp))
 		{
 			break;
 		}
-		printf("\t\t\t\t%d\t",t2.bid);
+		printf("\t\t\t\t| %d\t",t2.bid);
 		printf("\t%s\t",t2.bname);
-		printf("\t%d\t\n",t2.pprice);
+		printf("\t%d\t    |\n",t2.pprice);
 		total=total+t2.pprice;
+		dis =  0.05*total;
+		net = total-dis;
+		gst = 0.15*net, grandtotal=net+gst;
 	}
-	printf("\n\t\t\t\tTOTAL  BILL AMOUNT = [Rs. %d]\n\n",total);
+	printf("\n\t\t\t\t BILL AMOUNT      Rs.  %f",total);
+	printf("\n\t\t\t\t DISCOUNT PRICE   Rs. -%f",dis);
+	printf("\n\t\t\t\t NET AMOUNT       Rs.  %f",net);
+	printf("\n\t\t\t\t TAX CHARGE       Rs.  %f",gst);
+	printf("\n\t\t\t\t___________________________________");
+	printf("\n\n\t\t\t\t TOTAL AMOUNT = [Rs.  %f]\n\n",grandtotal);
+	printf("\t\t\t\t----------------------------------------------");
+	printf("\n\t\t\t\t\t\tTHANKS VISIT AGAIN");
+	printf("\n\t\t\t\t\t\tVERSION 1.1 BETA");
+	printf("\n\t\t\t\tfor more details please visit : www.SuperMarket.in");
 	total=0;
 	fclose(fp);
+	printf("\n\n\tPRESS ENTER TO PRINT THE CASH BILL");
 	getch();
     remove("cubill.txt");
 	system("cls");
