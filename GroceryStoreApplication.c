@@ -4,7 +4,6 @@
 #include <string.h>
 #include <conio.h>
 
-
 struct items
 {
 	int pid;
@@ -20,12 +19,10 @@ struct bill
 	int pprice;
 };
 
-
 //MENU SCREEN
 void menuwindow();
 void customerwindow();
 void adminwindow();
-
 
 //ADMIN SETTINGS
 void addProduct();
@@ -37,45 +34,39 @@ void deleteallProduct();
 void deleteProduct();
 void updateProduct();
 
-
+//CUSTOMER SETTINGS
 void buyProduct();
 struct items findProduct(int id);
 void updateproduct(int id,int quantity);
 void displayALLProduct();
-void  generatebill();
+void generatebill();
 int total=0;
 
+//STARTING HERE
 int main()
 {
 	menuwindow();
 }
-
+//MENU 
 void menuwindow()
 {
 	printf("\n\t\t\t  --------------------------------------------------------------");
     printf("\n\t\t\t               WELCOME TO GROCERY STORE SYSTEM              ");
     printf("\n\t\t\t  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 
-
 	int choice = 0;
 	printf("\n");
-
-
 	printf("\n\t\t\t\t            -_____MENU_____-\n");
 	printf("\n\t\t\t\t            | (1) CUSTOMER |");
 	printf("\n\t\t\t\t            | (2) ADMIN    |");
-
-
 	printf("\n\n\t\t\t\t 	PLEASE CHOOSE A NUMBER : ");
 	scanf("%d", &choice);
-
 	system("cls");
 
 	switch (choice)
 	{
 		case 1: customerwindow();
 		break;
-
 		case 2: adminwindow();
 		break;
 		default:
@@ -83,16 +74,14 @@ void menuwindow()
 	}
 	menuwindow();
 }
-
+//CUSTOMER MENU
 void customerwindow()
 {
 	int choice;
 	printf("\n");
-
 	printf("\n\t\t\t\t\t -_____CUSTOMER MENU_____-\n");
 	printf("\n\t\t\t\t\t  |   (1) BUY PRODUCT   |");
 	printf("\n\t\t\t\t\t  |   (0) BACK          |\n");
-
 	printf("\n\t\t\t\t\t  PLEASE CHOOSE A NUMBER : ");
 	scanf("%d",&choice);
 
@@ -107,24 +96,21 @@ void customerwindow()
 		default:
 		system("cls");
 		printf("^* INVALID CHOICE!!! PLEASE CHECK");
-
 		customerwindow();
 	}
 }
-
+//ADMIN MENU
 void adminwindow()
 {
 	int choice;
 	re:
 	printf("\n");
-
 	printf("\n\t\t\t\t\t -_______ADMIN MENU_______-\n");
 	printf("\n\t\t\t\t\t  | (1) ADD    PRODUCT   |");
 	printf("\n\t\t\t\t\t  | (2) DELETE PRODUCT   |");
 	printf("\n\t\t\t\t\t  | (3) VIEW   PRODUCT   |");
 	printf("\n\t\t\t\t\t  | (4) UPDATE PRODUCT   |");
 	printf("\n\t\t\t\t\t  | (0) BACK             |");
-
 	printf("\n\n\t\t\t\t\t PLEASE CHOOSE A NUMBER :");
 	scanf("%d",&choice);
 	system("cls");
@@ -142,11 +128,11 @@ void adminwindow()
 		break;
 		case 0: menuwindow();
 		break;
-		default: printf("INVALID CHOICE!!!");
+		default: printf("INVALID CHOICE!!! PLEASE CHECK");
 		adminwindow();
 	}
 }
-
+//VIEW MENU
 void viewProduct()
 {
 	int choice;
@@ -173,7 +159,7 @@ void viewProduct()
 		goto re;
 	}
 }
-
+//DELETE MENU
 void deleteoptionProduct()
 {
 	int choice;
@@ -199,14 +185,12 @@ void deleteoptionProduct()
 		goto re;
 	}
 }
-
+//ADD PRODUCT DETAILS HERE
 void addProduct()
 {
 	FILE *fp;
     struct items t1;
-
 	printf("\n\t\t\t\t----------ADD PRODUCT DETAILS----------\n\n");
-
     fp=fopen("Record.txt","a");
 
 	printf("\n\t\t\t\t  Enter Product_ID   :");
@@ -220,7 +204,7 @@ void addProduct()
 
 	if(fp == NULL)
 	{
-		printf(0,"Error in Opening file\nMake sure your file is not write protected","Warning",0);
+		printf("Error in Opening file\nMake sure your file is not write protected Warning");
  	}
  	else
 	{
@@ -238,34 +222,29 @@ void addProduct()
 	printf("\n\t\t\t\t\t DO YOU WANT TO ADD MORE PRODUCT \n\t\t\t\t\t");
 	printf("\n\t\t\t\t\t | (1) ADD MORE PRODUCT |");
 	printf("\n\t\t\t\t\t | (0) CANCEL           | \n");
-
 	printf("\n\t\t\t\t\t CHOOSE A NUMBER : ");
 	scanf("%d",&choice);
 
 	switch(choice)
 	{
-		case 1:
-		system("cls");
+		case 1: system("cls");
 		addProduct();
 		break;
-		case 0:
-		system("cls");
+		case 0: system("cls");
 		adminwindow();
 		break;
-		default:
-		system("cls");
+		default: system("cls");
 		printf("INVALID CHOICE!!! CHOOSE ONLY 1  OR 0");
 		goto re;
 	}
 }
-
+//VIEW ALL PRODUCT HERE
 void displayallProduct()
 {
     FILE *fp;
     struct items t1;
 	system("cls");
     fp=fopen("Record.txt","r");
-
 	printf("\n\t\t\t\t-__________ALL AVAILABLE PRODUCT__________-\n");
 
 	if(fp == NULL)
@@ -287,7 +266,7 @@ void displayallProduct()
 	getch();
 	system("cls");
 }
-
+//VIEW ONLY ONE PRODUCT
 void searchProduct()
 {
 	struct items t1;
@@ -328,21 +307,18 @@ void searchProduct()
 
 	switch(choice)
 	{
-		case 1:
-		system("cls");
+		case 1: system("cls");
 		searchProduct();
 		break;
-		case 0:
-		system("cls");
+		case 0: system("cls");
 		adminwindow();
 		break;
-		default:
-		system("cls");
+		default: system("cls");
 		printf("^*INVALID CHOICE!!! PLEASE CHECK");
 		goto re;
 	}
 }
-
+//DELETE ALL PRODUCT HERE
 void deleteallProduct()
 {
 	if(remove("Record.txt")==0)
@@ -359,7 +335,7 @@ void deleteallProduct()
 	system("cls");
 	adminwindow();
 }
-
+//DELETE ONLY ONE PRODUCT HERE
 void deleteProduct()
 {
 	struct items t1;
@@ -404,7 +380,7 @@ void deleteProduct()
     }
 	getch();
     system("cls");
-
+	
 	int choice;
 	re:
 	printf("\n");
@@ -416,21 +392,18 @@ void deleteProduct()
 
 	switch(choice)
 	{
-		case 1:
-		system("cls");
+		case 1: system("cls");
 		deleteProduct();
 		break;
-		case 0:
-		system("cls");
+		case 0: system("cls");
 		adminwindow();
 		break;
-		default:
-		system("cls");
+		default: system("cls");
 		printf("INVALID CHOICE!!! PLEASE CHECK");
 		goto re;
 	}
 }
-
+//UPDATE LATEST INFORAMATION ABOUT PRODUCT HERE
 void updateProduct()
 {
 	FILE *fp,*fp1;
@@ -503,7 +476,7 @@ void updateProduct()
 
 	getch();
     system("cls");
-
+	
 	int choice;
 	re:
 	printf("\n");
@@ -526,37 +499,39 @@ void updateProduct()
 		goto re;
 	}
 }
-
+//CUSTOMER CAN BUY HERE
 void buyProduct()
 {
 	char ch1,ch2;
 	int id;
+	
 	while(1)
 	{
 		displayALLProduct();
 		fflush(stdin);
-		printf("\n\t\t\tDO YOU WANT TO PURCHASE [Y/N] : ");
+		printf("\n\t\t\t DO YOU WANT TO PURCHASE [Y/N] : ");
 		scanf("%c",&ch1);
 		if(ch1=='y'||ch1=='Y')
 		{
 			FILE *fp;
 			struct bill t2;
 			struct items t1;
-			fp=fopen("bill.txt","a");
+			fp=fopen("cubill.txt","ab");
 			printf("\n\n\t\t\t ENTER THE PRODUCT ID TO PURCHASE : ");
 			scanf("%d",&id);
 
 			t1=findProduct(id);
+
 			t2.bid=t1.pid;
 			strcpy(t2.bname,t1.pName);
 			t2.pprice=t1.price;
 
 			fwrite(&t2,sizeof(t2),1,fp);
-			fclose(fp);
+			fclose(fp);	
 		}
 		fflush(stdin);
-		printf("\n\t\t\t DO YOU WANT TO CONTINUE TYPE -[Y/N] <>");
-		printf("\t\t DO YOU WANT GENERATE BILL TYPE -[B] : ");
+		printf("\n\t\t\t DO YOU WANT TO CONTINUE TYPE -[Y] <>");
+		printf("\t\t DO YOU WANT TO GENERATE BILL TYPE -[B] : ");
 		scanf("%c",&ch2);
 		if(ch2=='b'||ch2=='B')
 		{
@@ -567,7 +542,7 @@ void buyProduct()
 		}
 	}
 }
-
+//FINDING THE ID TO MATCH PRODUCT ID
 struct items findProduct(int id)
 {
 	FILE *fp;
@@ -590,7 +565,7 @@ struct items findProduct(int id)
 	fclose(fp);
 	return t1;
 }
-
+//UPDATING PRODUCT DETAILS AFTER BUYING
 void updateproduct(int id,int quantity)
 {
 	FILE *fp,*fp1;
@@ -643,7 +618,7 @@ void updateproduct(int id,int quantity)
 	fclose(fp);
 	fclose(fp1);
 }
-
+//CUSTOMER CAN VIEW ALL AVAILABLE PRODUCT HERE
 void displayALLProduct()
 {
 	FILE *fp;
@@ -674,17 +649,14 @@ void displayALLProduct()
 
 void  generatebill()
 {
-
-    FILE *fp;//*fp1;
+	FILE *fp;
 	struct bill t2;
-	//char ch1;
-	//char billname[20];
 
 	system("cls");
-	fp=fopen("bill.txt","r");
+	fp=fopen("cubill.txt","r");
 	printf("\n\t\t\t\t---BILL DETAILS---\n\n");
 	printf("\t\t\t\tPRODUCT ID\tPRODUCT NAME\tPRODUCT PRICE\n\n");
-
+	
 		while(fread(&t2,sizeof(t2),1,fp))
 		{
 		if (feof(fp))
@@ -700,7 +672,7 @@ void  generatebill()
 	total=0;
 	fclose(fp);
 	getch();
-    remove("bill.txt");
+    remove("cubill.txt");
 	system("cls");
     customerwindow();
 }
